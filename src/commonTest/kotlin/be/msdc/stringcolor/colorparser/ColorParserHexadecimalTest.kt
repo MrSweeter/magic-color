@@ -1,12 +1,12 @@
 package be.msdc.stringcolor.colorparser
 
 import be.msdc.stringcolor.ColorParser
-import be.msdc.stringcolor.colors.*
+import be.msdc.stringcolor.colors.HexadecimalColor
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 
-class ColorParserHexadecimalTest   {
+class ColorParserHexadecimalTest {
 
     private val redColorResult = HexadecimalColor(255, 0, 0)
     private val redAlphaColorResult = HexadecimalColor(255, 0, 0, 0.5f)

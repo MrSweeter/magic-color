@@ -1,20 +1,12 @@
 package be.msdc.stringcolor.colors
 
-open class RGBColor: ColorAlpha {
+open class RGBColor : ColorAlpha {
 
-    constructor(
-        red: Int,
-        green: Int,
-        blue: Int,
-        alpha: Float
-    ): super(alpha) {
+    constructor(red: Int, green: Int, blue: Int, alpha: Float = 1f) : super(alpha) {
         this.red = red
         this.green = green
         this.blue = blue
     }
-
-    constructor(red: Int, green: Int, blue: Int): this(red, green, blue, 1f)
-    constructor(red: Int, green: Int, blue: Int, alpha: Int): this(red, green, blue, alpha / 100f)
 
     private var _red: Int = 0
     var red: Int
@@ -89,7 +81,7 @@ open class RGBColor: ColorAlpha {
         return result
     }
 
-    companion object    {
+    companion object {
         const val PREFIX_RGB = "rgb"
         const val PREFIX_RGBA = "rgba"
     }

@@ -12,8 +12,8 @@ class RgbToHsv {
         val black = RGBColor(0, 0, 0)
         val hsv = black.toHSV()
         assertEquals(0, hsv.hue)
-        assertEquals(0f, hsv.saturation)
-        assertEquals(0f, hsv.value)
+        assertEquals(0, hsv.saturation)
+        assertEquals(0, hsv.value)
     }
 
     @Test
@@ -21,8 +21,8 @@ class RgbToHsv {
         val white = RGBColor(255, 255, 255)
         val hsv = white.toHSV()
         assertEquals(0, hsv.hue)
-        assertEquals(0f, hsv.saturation)
-        assertEquals(1f, hsv.value)
+        assertEquals(0, hsv.saturation)
+        assertEquals(100, hsv.value)
     }
 
     @Test
@@ -30,8 +30,8 @@ class RgbToHsv {
         val red = RGBColor(255, 0, 0)
         val hsv = red.toHSV()
         assertEquals(0, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(1f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(100, hsv.value)
     }
 
     @Test
@@ -39,8 +39,8 @@ class RgbToHsv {
         val green = RGBColor(0, 255, 0)
         val hsv = green.toHSV()
         assertEquals(120, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(1f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(100, hsv.value)
     }
 
     @Test
@@ -48,8 +48,8 @@ class RgbToHsv {
         val blue = RGBColor(0, 0, 255)
         val hsv = blue.toHSV()
         assertEquals(240, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(1f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(100, hsv.value)
     }
 
     @Test
@@ -57,8 +57,8 @@ class RgbToHsv {
         val yellow = RGBColor(255, 255, 0)
         val hsv = yellow.toHSV()
         assertEquals(60, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(1f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(100, hsv.value)
     }
 
     @Test
@@ -66,8 +66,8 @@ class RgbToHsv {
         val cyan = RGBColor(0, 255, 255)
         val hsv = cyan.toHSV()
         assertEquals(180, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(1f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(100, hsv.value)
     }
 
     @Test
@@ -75,8 +75,8 @@ class RgbToHsv {
         val magenta = RGBColor(255, 0, 255)
         val hsv = magenta.toHSV()
         assertEquals(300, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(1f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(100, hsv.value)
     }
 
     @Test
@@ -84,8 +84,8 @@ class RgbToHsv {
         val silver = RGBColor(191, 191, 191)
         val hsv = silver.toHSV()
         assertEquals(0, hsv.hue)
-        assertEquals(0f, hsv.saturation)
-        assertEquals(0.75f, hsv.value)
+        assertEquals(0, hsv.saturation)
+        assertEquals(75, hsv.value)
     }
 
     @Test
@@ -93,8 +93,8 @@ class RgbToHsv {
         val gray = RGBColor(128, 128, 128)
         val hsv = gray.toHSV()
         assertEquals(0, hsv.hue)
-        assertEquals(0f, hsv.saturation)
-        assertEquals(0.5f, hsv.value)
+        assertEquals(0, hsv.saturation)
+        assertEquals(50, hsv.value)
     }
 
     @Test
@@ -102,8 +102,8 @@ class RgbToHsv {
         val maroon = RGBColor(128, 0, 0)
         val hsv = maroon.toHSV()
         assertEquals(0, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(0.5f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(50, hsv.value)
     }
 
     @Test
@@ -111,8 +111,8 @@ class RgbToHsv {
         val olive = RGBColor(128, 128, 0)
         val hsv = olive.toHSV()
         assertEquals(60, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(0.5f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(50, hsv.value)
     }
 
     @Test
@@ -120,8 +120,8 @@ class RgbToHsv {
         val darkGreen = RGBColor(0, 128, 0)
         val hsv = darkGreen.toHSV()
         assertEquals(120, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(0.5f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(50, hsv.value)
     }
 
     @Test
@@ -129,8 +129,8 @@ class RgbToHsv {
         val purple = RGBColor(128, 0, 128)
         val hsv = purple.toHSV()
         assertEquals(300, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(0.5f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(50, hsv.value)
     }
 
     @Test
@@ -138,8 +138,8 @@ class RgbToHsv {
         val teal = RGBColor(0, 128, 128)
         val hsv = teal.toHSV()
         assertEquals(180, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(0.5f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(50, hsv.value)
     }
 
     @Test
@@ -147,8 +147,8 @@ class RgbToHsv {
         val navy = RGBColor(0, 0, 128)
         val hsv = navy.toHSV()
         assertEquals(240, hsv.hue)
-        assertEquals(1f, hsv.saturation)
-        assertEquals(0.5f, hsv.value)
+        assertEquals(100, hsv.saturation)
+        assertEquals(50, hsv.value)
     }
     //#endregion
 

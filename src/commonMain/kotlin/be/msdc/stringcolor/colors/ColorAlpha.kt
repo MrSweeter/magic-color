@@ -1,17 +1,18 @@
 package be.msdc.stringcolor.colors
 
-import be.msdc.stringcolor.utils.keepDecimalAndCoerceIn
+import be.msdc.stringcolor.utils.keep2DecimalAndCoerceInPct
+import be.msdc.stringcolor.utils.toPctInt
 
-abstract class ColorAlpha: IColor {
+abstract class ColorAlpha : IColor {
 
     private var _alpha: Float = 1f
     var alpha: Float
         get() = _alpha
         set(value) {
-            _alpha = value.keepDecimalAndCoerceIn(2, 0f, 1f)
+            _alpha = value.keep2DecimalAndCoerceInPct()
         }
     val alphaPct: Int
-        get() = (alpha * 100).toInt().coerceIn(0, 100)
+        get() = alpha.toPctInt()
 
     constructor(alpha: Float) {
         this.alpha = alpha

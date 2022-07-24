@@ -31,3 +31,7 @@ abstract class IColor {
         return toRGB().hashCode()
     }
 }
+
+fun IColor?.isSameColor(other: IColor?): Boolean {
+    return this?.toRGB() == other?.toRGB()
+}

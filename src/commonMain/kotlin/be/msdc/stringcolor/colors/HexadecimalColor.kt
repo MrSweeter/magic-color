@@ -2,11 +2,7 @@ package be.msdc.stringcolor.colors
 
 import be.msdc.stringcolor.utils.padStart
 
-class HexadecimalColor: RGBColor  {
-
-    constructor(red: Int, green: Int, blue: Int, alpha: Float = 1f): super(red, green, blue, alpha)
-    constructor(red: Int, green: Int, blue: Int): this(red, green, blue, 1f)
-    constructor(red: Int, green: Int, blue: Int, alpha: Int): this(red, green, blue, alpha / 255f)
+class HexadecimalColor(red: Int, green: Int, blue: Int, alpha: Float = 1f) : RGBColor(red, green, blue, alpha) {
 
     override val formattedRed: String
         get() = red.padStart(16, 2)
@@ -26,7 +22,7 @@ class HexadecimalColor: RGBColor  {
         return this
     }
 
-    companion object    {
+    companion object {
         const val PREFIX_HEX = "#"
         const val PREFIX_HEX_X = "0x"
 

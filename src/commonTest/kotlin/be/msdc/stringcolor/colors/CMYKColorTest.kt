@@ -8,7 +8,7 @@ class CMYKColorTest {
     //#region CMYK to RGB
     @Test
     fun testToRgbBlack() {
-        val black = CMYKColor(0f, 0f, 0f, 1f)
+        val black = CMYKColor(0, 0, 0, 100)
         val hsl = black.toRGB()
         assertEquals(0, hsl.red)
         assertEquals(0, hsl.green)
@@ -17,7 +17,7 @@ class CMYKColorTest {
 
     @Test
     fun testToRgbWhite() {
-        val white = CMYKColor(0f, 0f, 0f, 0f)
+        val white = CMYKColor(0, 0, 0, 0)
         val hsl = white.toRGB()
         assertEquals(255, hsl.red)
         assertEquals(255, hsl.green)
@@ -26,7 +26,7 @@ class CMYKColorTest {
 
     @Test
     fun testToRgbRed() {
-        val red = CMYKColor(0f, 1f, 1f, 0f)
+        val red = CMYKColor(0, 100, 100, 0)
         val hsl = red.toRGB()
         assertEquals(255, hsl.red)
         assertEquals(0, hsl.green)
@@ -35,7 +35,7 @@ class CMYKColorTest {
 
     @Test
     fun testToRgbGreen() {
-        val green = CMYKColor(1f, 0f, 1f, 0f)
+        val green = CMYKColor(100, 0, 100, 0)
         val hsl = green.toRGB()
         assertEquals(0, hsl.red)
         assertEquals(255, hsl.green)
@@ -44,7 +44,7 @@ class CMYKColorTest {
 
     @Test
     fun testToRgbBlue() {
-        val blue = CMYKColor(1f, 1f, 0f, 0f)
+        val blue = CMYKColor(100, 100, 0, 0)
         val hsl = blue.toRGB()
         assertEquals(0, hsl.red)
         assertEquals(0, hsl.green)
@@ -53,7 +53,7 @@ class CMYKColorTest {
 
     @Test
     fun testToRgbYellow() {
-        val yellow = CMYKColor(0f, 0f, 1f, 0f)
+        val yellow = CMYKColor(0, 0, 100, 0)
         val hsl = yellow.toRGB()
         assertEquals(255, hsl.red)
         assertEquals(255, hsl.green)
@@ -62,7 +62,7 @@ class CMYKColorTest {
 
     @Test
     fun testToRgbCyan() {
-        val cyan = CMYKColor(1f, 0f, 0f, 0f)
+        val cyan = CMYKColor(100, 0, 0, 0)
         val hsl = cyan.toRGB()
         assertEquals(0, hsl.red)
         assertEquals(255, hsl.green)
@@ -71,7 +71,7 @@ class CMYKColorTest {
 
     @Test
     fun testToRgbMagenta() {
-        val magenta = CMYKColor(0f, 1f, 0f, 0f)
+        val magenta = CMYKColor(0, 100, 0, 0)
         val hsl = magenta.toRGB()
         assertEquals(255, hsl.red)
         assertEquals(0, hsl.green)
@@ -150,5 +150,5 @@ class CMYKColorTest {
         assertEquals(128, hex.blue)
     }
     //#endregion
-    
+
 }

@@ -1,18 +1,10 @@
 package be.msdc.stringcolor.colors
 
 import be.msdc.stringcolor.utils.coerceInDegree
-import be.msdc.stringcolor.utils.keepDecimalAndCoerceIn
+import be.msdc.stringcolor.utils.coerceInPct
 import kotlin.math.roundToInt
 
-abstract class HueColor: ColorAlpha {
-
-    constructor(hue: Int, saturation: Float, alpha: Float) : super(alpha) {
-        this.hue = hue
-        this.saturation = saturation
-    }
-
-    override val formattedAlpha: String
-        get() = "${alphaPct}%"
+abstract class HueColor(hue: Int, saturation: Int, alpha: Float) : ColorAlpha(alpha) {
 
     private var _hue: Int = 0
     var hue: Int
@@ -21,19 +13,22 @@ abstract class HueColor: ColorAlpha {
             _hue = value.coerceInDegree()
         }
 
-    private var _saturation: Float = 0f
-    var saturation: Float
+    private var _saturation: Int = 0
+    var saturation: Int
         get() = _saturation
         set(value) {
-            _saturation = value.keepDecimalAndCoerceIn(2, 0f, 1f)
+            _saturation = value.coerceInPct()
         }
-    val saturationPct: Int
-        get() = (saturation * 100).roundToInt()
 
     val formattedHue: String
-        get() = "${hue}°"
+        get() = "$hue°"
     val formattedSaturation: String
-        get() = "${saturationPct}%"
+        get() = "$saturation%"
+
+    init {
+        this.hue = hue
+        this.saturation = saturation
+    }
 
     protected abstract val chroma: Float
     protected abstract val hueChroma: Float
