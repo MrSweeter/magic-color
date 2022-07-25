@@ -4,13 +4,13 @@ import be.msdc.stringcolor.colors.HexadecimalColor
 
 class HexadecimalColorFormatter : ColorFormatter<HexadecimalColor>() {
 
-    override val prefix: Regex = Regex("(${HexadecimalColor.PREFIX_HEX}|${HexadecimalColor.PREFIX_HEX_X})")
+    private val prefixPattern: String = "${HexadecimalColor.PREFIX_HEX}|${HexadecimalColor.PREFIX_HEX_X}"
 
-    override val regexes: Set<Regex> = setOf(
-        Regex("${prefix}(${hex}{3})"),
-        Regex("${prefix}(${hex}{4})"),
-        Regex("${prefix}(${hex}{6})"),
-        Regex("${prefix}(${hex}{8})"),
+    override val regexes: Set<PrefixValueRegex> = setOf(
+        PrefixValueRegex(prefixPattern, "$hex{3}"),
+        PrefixValueRegex(prefixPattern, "$hex{4}"),
+        PrefixValueRegex(prefixPattern, "$hex{6}"),
+        PrefixValueRegex(prefixPattern, "$hex{8}"),
     )
 
     override fun serialize(color: HexadecimalColor, includeAlpha: Boolean): String {

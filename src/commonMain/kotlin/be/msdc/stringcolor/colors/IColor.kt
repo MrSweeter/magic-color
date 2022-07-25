@@ -4,6 +4,10 @@ abstract class IColor {
 
     abstract fun toRGB(): RGBColor
 
+    open fun toTextual(): TextColor? {
+        return toRGB().toTextual()
+    }
+
     open fun toHexadecimal(): HexadecimalColor {
         return toRGB().toHexadecimal()
     }

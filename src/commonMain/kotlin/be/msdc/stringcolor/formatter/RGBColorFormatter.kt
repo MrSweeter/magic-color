@@ -6,12 +6,9 @@ import be.msdc.stringcolor.colors.RGBColor.Companion.PREFIX_RGBA
 
 class RGBColorFormatter : ColorArrayFormatter<RGBColor>() {
 
-    override val prefix: Regex = Regex("(${PREFIX_RGB}|${PREFIX_RGBA})")
-
-    override val regexes: Set<Regex> = setOf(
-        Regex("(${PREFIX_RGB})(\\(${bit8},${bit8},${bit8}\\))"), // rgb(r,g,b)
-        Regex("(${PREFIX_RGBA})(\\(${bit8},${bit8},${bit8},${pctInt}\\))"), // rgba(r,g,b,a)
-        Regex("(${PREFIX_RGBA})(\\(${bit8},${bit8},${bit8},${pctFlt}\\))"), // rgba(r,g,b,.a)
+    override val regexes: Set<PrefixValueRegex> = setOf(
+        PrefixValueRegex(PREFIX_RGB, "\\(${bit8},${bit8},${bit8}\\)"),
+        PrefixValueRegex(PREFIX_RGBA, "\\(${bit8},${bit8},${bit8},${pctFlt}\\)"),
     )
 
     override fun serialize(color: RGBColor, includeAlpha: Boolean): String {

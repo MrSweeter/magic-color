@@ -6,11 +6,9 @@ import be.msdc.stringcolor.colors.CMYKColor.Companion.PREFIX_CMYKA
 
 class CMYKColorFormatter : ColorArrayFormatter<CMYKColor>() {
 
-    override val prefix: Regex = Regex("(${PREFIX_CMYK}|${PREFIX_CMYKA})")
-
-    override val regexes: Set<Regex> = setOf(
-        Regex("(${PREFIX_CMYK})(\\(${pctInt},${pctInt},${pctInt},${pctInt}\\))"),
-        Regex("(${PREFIX_CMYKA})(\\(${pctInt},${pctInt},${pctInt},${pctInt},${pctFlt}\\))"),
+    override val regexes: Set<PrefixValueRegex> = setOf(
+        PrefixValueRegex(PREFIX_CMYK, "\\(${pctInt},${pctInt},${pctInt},${pctInt}\\)"),
+        PrefixValueRegex(PREFIX_CMYKA, "\\(${pctInt},${pctInt},${pctInt},${pctInt},${pctFlt}\\)"),
     )
 
     override fun serialize(color: CMYKColor, includeAlpha: Boolean): String {

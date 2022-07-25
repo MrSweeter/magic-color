@@ -11,6 +11,10 @@ interface ColorDeserializer<T> where T : IColor {
     fun deserialize(prefix: String, value: String): T?
 }
 
+data class PrefixValueRegex(val prefixPattern: String, val valuePattern: String)   {
+    val fullRegex = Regex("(${prefixPattern})(${valuePattern})")
+}
+
 abstract class ColorFormatter<T> : ColorSerializer<T>, ColorDeserializer<T> where T : IColor {
 
     private val PREFIX_GROUP_INDEX = 1
@@ -22,15 +26,14 @@ abstract class ColorFormatter<T> : ColorSerializer<T>, ColorDeserializer<T> wher
     protected val bit8 = "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"
     protected val degree = "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9]|360)"
 
-    abstract val prefix: Regex
-    abstract val regexes: Set<Regex>
+    abstract val regexes: Set<PrefixValueRegex>
 
     fun match(string: String): Boolean {
-        return regexes.any { it.matches(sanitize(string)) }
+        return regexes.any { it.fullRegex.matches(sanitize(string)) }
     }
 
     override fun deserialize(string: String): T? {
-        val regexResult = regexes.firstNotNullOfOrNull { it.matchEntire(sanitize(string)) } ?: return null
+        val regexResult = regexes.firstNotNullOfOrNull { it.fullRegex.matchEntire(sanitize(string)) } ?: return null
         val prefix = regexResult.groupValues[PREFIX_GROUP_INDEX]
         val value = regexResult.groupValues[COLOR_GROUP_INDEX]
         return deserialize(prefix, value)

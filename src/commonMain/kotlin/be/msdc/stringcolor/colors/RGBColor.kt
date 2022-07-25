@@ -45,6 +45,10 @@ open class RGBColor : ColorAlpha {
         return this
     }
 
+    override fun toTextual(): TextColor? {
+        return TextColor.values().firstOrNull { it.rgbColor == this }
+    }
+
     override fun toHexadecimal(): HexadecimalColor {
         return HexadecimalColor.fromRGB(this)
     }

@@ -7,6 +7,7 @@ object ColorParser {
 
     private val formatters by lazy {
         listOf(
+            TextColorFormatter(),
             RGBColorFormatter(),
             HexadecimalColorFormatter(),
             HSLColorFormatter(),

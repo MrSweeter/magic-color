@@ -8,13 +8,11 @@ import be.msdc.stringcolor.colors.HSVColor.Companion.PREFIX_HSVA
 
 class HSVColorFormatter : ColorArrayFormatter<HSVColor>() {
 
-    override val prefix: Regex = Regex("(${PREFIX_HSV}|${PREFIX_HSVA}|${PREFIX_HSB}|${PREFIX_HSBA})")
-
-    override val regexes: Set<Regex> = setOf(
-        Regex("(${PREFIX_HSV})(\\(${degree},${pctInt},${pctInt}\\))"),
-        Regex("(${PREFIX_HSB})(\\(${degree},${pctInt},${pctInt}\\))"),
-        Regex("(${PREFIX_HSVA})(\\(${degree},${pctInt},${pctInt},${pctFlt}\\))"),
-        Regex("(${PREFIX_HSBA})(\\(${degree},${pctInt},${pctInt},${pctFlt}\\))"),
+    override val regexes: Set<PrefixValueRegex> = setOf(
+        PrefixValueRegex(PREFIX_HSV, "\\(${degree},${pctInt},${pctInt}\\)"),
+        PrefixValueRegex(PREFIX_HSB, "\\(${degree},${pctInt},${pctInt}\\)"),
+        PrefixValueRegex(PREFIX_HSVA, "\\(${degree},${pctInt},${pctInt},${pctFlt}\\)"),
+        PrefixValueRegex(PREFIX_HSBA, "\\(${degree},${pctInt},${pctInt},${pctFlt}\\)"),
     )
 
     override fun serialize(color: HSVColor, includeAlpha: Boolean): String {

@@ -13,11 +13,11 @@ internal fun <T> assertSameColor(expected: T, actual: T, message: String? = null
 internal fun Asserter.assertSameColor(message: String?, expected: Any?, actual: Any?) {
     assertIs<IColor>(
         actual,
-        "Expected actual is ${IColor::class.qualifiedName} inheritance but was ${actual?.let { it::class.qualifiedName }}"
+        "Expected actual is ${IColor::class.simpleName} inheritance but was ${actual?.let { it::class.simpleName }}"
     )
     assertIs<IColor>(
         expected,
-        "Expected expected is ${IColor::class.qualifiedName} inheritance but was ${expected?.let { it::class.qualifiedName }}"
+        "Expected expected is ${IColor::class.simpleName} inheritance but was ${expected?.let { it::class.simpleName }}"
     )
     assertTrue({ messagePrefix(message) + "Expected <$expected>, actual <$actual>." }, actual.isSameColor(expected))
 }

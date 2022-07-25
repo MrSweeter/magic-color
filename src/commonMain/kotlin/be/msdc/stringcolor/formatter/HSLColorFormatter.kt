@@ -6,11 +6,9 @@ import be.msdc.stringcolor.colors.HSLColor.Companion.PREFIX_HSLA
 
 class HSLColorFormatter : ColorArrayFormatter<HSLColor>() {
 
-    override val prefix: Regex = Regex("(${PREFIX_HSL}|${PREFIX_HSLA})")
-
-    override val regexes: Set<Regex> = setOf(
-        Regex("(${PREFIX_HSL})(\\(${degree},${pctInt},${pctInt}\\))"),
-        Regex("(${PREFIX_HSLA})(\\(${degree},${pctInt},${pctInt},${pctFlt}\\))"),
+    override val regexes: Set<PrefixValueRegex> = setOf(
+        PrefixValueRegex(PREFIX_HSL, "\\(${degree},${pctInt},${pctInt}\\)"),
+        PrefixValueRegex(PREFIX_HSLA, "\\(${degree},${pctInt},${pctInt},${pctFlt}\\)"),
     )
 
     override fun serialize(color: HSLColor, includeAlpha: Boolean): String {

@@ -9,6 +9,7 @@ build/
 /local.properties
 local.properties
 .lock
+/kotlin-js-store/yarn.lock
 
 # User-specific stuff
 .idea/
