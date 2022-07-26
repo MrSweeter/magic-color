@@ -1,14 +1,43 @@
 package be.msdc.stringcolor.colors
 
 import be.msdc.stringcolor.utils.FloatMatrix
+import be.msdc.stringcolor.utils.Illuminant
 import be.msdc.stringcolor.utils.keepDecimal
+import kotlin.math.pow
 import kotlin.math.roundToInt
 
 // The XYZ model is a color model with 3 components that are used to model human color vision on a basic sensory level.
 // https://fr.wikipedia.org/wiki/CIE_XYZ
 // https://www.oceanopticsbook.info/view/photometry-and-visibility/from-xyz-to-rgb
 
-class XYZColor(var x: Float, var y: Float, var z: Float, alpha: Float = 1f): ColorAlpha(alpha) {
+class XYZColor(x: Float, y: Float, z: Float, alpha: Float = 1f): ColorAlpha(alpha) {
+
+    private var _x: Float = 0f
+    var x: Float
+        get() = _x
+        set(value) {
+            _x = value.coerceIn(0f, Illuminant.D65_10.x)
+        }
+
+    private var _y: Float = 0f
+    var y: Float
+        get() = _y
+        set(value) {
+            _y = value.coerceIn(0f, Illuminant.D65_10.y)
+        }
+
+    private var _z: Float = 0f
+    var z: Float
+        get() = _z
+        set(value) {
+            _z = value.coerceIn(0f, Illuminant.D65_10.z)
+        }
+
+    init {
+        this.x = x
+        this.y = y
+        this.z = z
+    }
 
     val formattedX
         get() = x.keepDecimal(XYZ_MAX_DECIMAL_PLACES).toString()
@@ -23,8 +52,12 @@ class XYZColor(var x: Float, var y: Float, var z: Float, alpha: Float = 1f): Col
     }
 
     override fun toRGB(): RGBColor {
+        val xyzMatrix = FloatMatrix(listOf(
+            listOf(x),
+            listOf(y),
+            listOf(z)
+        ))
         val rgbMatrix = xyzToRgbMatrix * xyzMatrix
-        println(rgbMatrix)
         return RGBColor(
             (rgbMatrix.get(row = 0) * 255).roundToInt(),
             (rgbMatrix.get(row = 1) * 255).roundToInt(),
@@ -33,12 +66,29 @@ class XYZColor(var x: Float, var y: Float, var z: Float, alpha: Float = 1f): Col
         )
     }
 
-    private val xyzMatrix: FloatMatrix
-        get() = FloatMatrix(listOf(
-            listOf(x),
-            listOf(y),
-            listOf(z)
-        ))
+    override fun toLAB(): LABColor {
+        // 0.008856 Actual CIE standard
+        // 216 / 24389 Intent of the CIE standard
+        val epsilon = 216 / 24389
+        // 903.3 Actual CIE standard
+        // 24389 / 27 Intent of the CIE standard
+        val kappa = 24389 / 27
+
+        val fx = this.x / Illuminant.D65_10.x
+        val fy = this.y / Illuminant.D65_10.y
+        val fz = this.z / Illuminant.D65_10.z
+
+        val x0 = if (fx > epsilon) fx.pow(1 / 3) else (kappa * fx + 16) / 116f
+        val y0 = if (fy > epsilon) fy.pow(1 / 3) else (kappa * fy + 16) / 116f
+        val z0 = if (fz > epsilon) fz.pow(1 / 3) else (kappa * fz + 16) / 116f
+
+        return LABColor(
+            100 * (116 * y - 16),
+            500 * (x0 - y0) * 100,
+            200 * (y0 - z0) * 100,
+            alpha
+        )
+    }
 
     companion object {
         const val PREFIX_XYZ = "xyz"

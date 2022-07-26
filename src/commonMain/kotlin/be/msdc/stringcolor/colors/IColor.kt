@@ -28,6 +28,10 @@ abstract class IColor {
         return toRGB().toXYZ()
     }
 
+    open fun toLAB(): LABColor {
+        return toRGB().toLAB()
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is IColor) return false

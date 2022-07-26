@@ -69,6 +69,10 @@ open class RGBColor : ColorAlpha {
         return XYZColor.fromRGB(this)
     }
 
+    override fun toLAB(): LABColor {
+        return LABColor.fromRGB(this)
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is RGBColor) return false
