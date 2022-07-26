@@ -13,7 +13,7 @@ object ColorParser {
             HSLColorFormatter(),
             HSVColorFormatter(),
             CMYKColorFormatter(),
-            // TODO("XYZ")
+            XYZColorFormatter(),
             // TODO("LAB")
         )
     }

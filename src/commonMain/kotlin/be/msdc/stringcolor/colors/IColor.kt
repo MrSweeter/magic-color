@@ -24,6 +24,10 @@ abstract class IColor {
         return toRGB().toCMYK()
     }
 
+    open fun toXYZ(): XYZColor {
+        return toRGB().toXYZ()
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is IColor) return false

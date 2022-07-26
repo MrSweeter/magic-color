@@ -9,73 +9,73 @@ class CMYKColorTest {
     @Test
     fun testToRgbBlack() {
         val black = CMYKColor(0, 0, 0, 100)
-        val hsl = black.toRGB()
-        assertEquals(0, hsl.red)
-        assertEquals(0, hsl.green)
-        assertEquals(0, hsl.blue)
+        val rgb = black.toRGB()
+        assertEquals(0, rgb.red)
+        assertEquals(0, rgb.green)
+        assertEquals(0, rgb.blue)
     }
 
     @Test
     fun testToRgbWhite() {
         val white = CMYKColor(0, 0, 0, 0)
-        val hsl = white.toRGB()
-        assertEquals(255, hsl.red)
-        assertEquals(255, hsl.green)
-        assertEquals(255, hsl.blue)
+        val rgb = white.toRGB()
+        assertEquals(255, rgb.red)
+        assertEquals(255, rgb.green)
+        assertEquals(255, rgb.blue)
     }
 
     @Test
     fun testToRgbRed() {
         val red = CMYKColor(0, 100, 100, 0)
-        val hsl = red.toRGB()
-        assertEquals(255, hsl.red)
-        assertEquals(0, hsl.green)
-        assertEquals(0, hsl.blue)
+        val rgb = red.toRGB()
+        assertEquals(255, rgb.red)
+        assertEquals(0, rgb.green)
+        assertEquals(0, rgb.blue)
     }
 
     @Test
     fun testToRgbGreen() {
         val green = CMYKColor(100, 0, 100, 0)
-        val hsl = green.toRGB()
-        assertEquals(0, hsl.red)
-        assertEquals(255, hsl.green)
-        assertEquals(0, hsl.blue)
+        val rgb = green.toRGB()
+        assertEquals(0, rgb.red)
+        assertEquals(255, rgb.green)
+        assertEquals(0, rgb.blue)
     }
 
     @Test
     fun testToRgbBlue() {
         val blue = CMYKColor(100, 100, 0, 0)
-        val hsl = blue.toRGB()
-        assertEquals(0, hsl.red)
-        assertEquals(0, hsl.green)
-        assertEquals(255, hsl.blue)
+        val rgb = blue.toRGB()
+        assertEquals(0, rgb.red)
+        assertEquals(0, rgb.green)
+        assertEquals(255, rgb.blue)
     }
 
     @Test
     fun testToRgbYellow() {
         val yellow = CMYKColor(0, 0, 100, 0)
-        val hsl = yellow.toRGB()
-        assertEquals(255, hsl.red)
-        assertEquals(255, hsl.green)
-        assertEquals(0, hsl.blue)
+        val rgb = yellow.toRGB()
+        assertEquals(255, rgb.red)
+        assertEquals(255, rgb.green)
+        assertEquals(0, rgb.blue)
     }
 
     @Test
     fun testToRgbCyan() {
         val cyan = CMYKColor(100, 0, 0, 0)
-        val hsl = cyan.toRGB()
-        assertEquals(0, hsl.red)
-        assertEquals(255, hsl.green)
-        assertEquals(255, hsl.blue)
+        val rgb = cyan.toRGB()
+        assertEquals(0, rgb.red)
+        assertEquals(255, rgb.green)
+        assertEquals(255, rgb.blue)
     }
 
     @Test
     fun testToRgbMagenta() {
         val magenta = CMYKColor(0, 100, 0, 0)
-        val hsl = magenta.toRGB()
-        assertEquals(255, hsl.red)
-        assertEquals(0, hsl.green)
-        assertEquals(255, hsl.blue)
+        val rgb = magenta.toRGB()
+        assertEquals(255, rgb.red)
+        assertEquals(0, rgb.green)
+        assertEquals(255, rgb.blue)
     }
 
     @Test

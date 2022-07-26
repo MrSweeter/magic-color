@@ -4,7 +4,7 @@ import be.msdc.stringcolor.utils.coerceInPct
 import be.msdc.stringcolor.utils.toPctInt
 import kotlin.math.roundToInt
 
-open class CMYKColor(cyan: Int, magenta: Int, yellow: Int, key: Int, alpha: Float = 1f) : ColorAlpha(alpha) {
+class CMYKColor(cyan: Int, magenta: Int, yellow: Int, key: Int, alpha: Float = 1f) : ColorAlpha(alpha) {
 
     private var _cyan: Int = 0
     var cyan: Int

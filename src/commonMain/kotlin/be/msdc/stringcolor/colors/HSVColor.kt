@@ -6,7 +6,7 @@ import be.msdc.stringcolor.utils.toPctInt
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
-open class HSVColor(hue: Int, saturation: Int, value: Int, alpha: Float = 1f) : HueColor(hue, saturation, alpha) {
+class HSVColor(hue: Int, saturation: Int, value: Int, alpha: Float = 1f) : HueColor(hue, saturation, alpha) {
 
     private var _value: Int = 0
     var value: Int
